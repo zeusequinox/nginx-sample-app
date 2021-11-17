@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-worker
+  labels:
+    app: nginx-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: nginx
+    spec:
+      containers:
+       -   name: nginx-container
+           image: zeusequinox/sample-nginx
+           ports:
+             - containerPort: 80
+      nodeSelector:
+        workernode01: workernode01
+  selector:
+    matchLabels:
+      app: nginx
