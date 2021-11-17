@@ -1,6 +1,9 @@
 pipeline{
   agent { label 'centos'}
-  stage('build'){
+  stages{
+    stage('build'){
     echo 'build'    
+    }
+
   }
-}
+ }
